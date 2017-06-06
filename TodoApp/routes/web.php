@@ -1,14 +1,16 @@
 <?php
 use App\Task;
 
-Route::get('/tasks', function () {
-	//$tasks = DB::table('tasks')->latest()->get();
-	$tasks = Task::all();
-    return view('tasks/index', compact('tasks'));
-});
+Route::get('/tasks', 'TasksController@index');
+Route::get('tasks/{id}', 'TasksController@show');
+Route::get('/tasks/create', 'TasksController@create');
+Route::post('/tasks', 'TasksController@store');
 
-Route::get('/tasks/{task}', function ($id) {
-	//$task = DB::table('tasks')->find($id);
-	$task = Task::find($id);
-    return view('tasks/show', compact('task'));
-});
+
+// Tasks
+// GET /tasks
+// GET /tasks/create
+// POST /tasks
+// GET /tasks/{id}
+// PATCH /tasks/{id}
+// DELETE /tasks/{id}
