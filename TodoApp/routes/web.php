@@ -4,7 +4,7 @@ use App\Task;
 Route::get('/tasks', 'TasksController@index');
 Route::get('tasks/{id}', 'TasksController@show');
 Route::get('/tasks/create', 'TasksController@create');
-Route::post('/tasks', 'TasksController@store');
+
 
 
 // Tasks
