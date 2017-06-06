@@ -43,7 +43,7 @@ class TasksController extends Controller
         $task->title = $request->title;
         $task->body = "";
         $task->save();
-        return response('Yay', 200);
+        return response('Task Created', 200);
     }
 
     /**
@@ -78,7 +78,23 @@ class TasksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $this->validate($request, [
+        // ]);
+        $task = Task::find($id);
+        if ($request->has('title')) {
+            $task->title = $request->title;
+        }
+        
+        if ($request->has('body')) {
+            $task->body = $request->body;
+        }
+
+        if ($request->has('isCompleted')) {
+            $task->isCompleted = $request->isCompleted;
+        }
+        
+        $task->save();
+        return response('Task Updated', 200);
     }
 
     /**
